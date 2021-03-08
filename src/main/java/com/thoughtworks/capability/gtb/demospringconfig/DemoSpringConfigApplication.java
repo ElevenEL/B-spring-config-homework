@@ -1,5 +1,6 @@
 package com.thoughtworks.capability.gtb.demospringconfig;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -9,17 +10,17 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 @ConfigurationPropertiesScan
 @SpringBootApplication
+@RequiredArgsConstructor
 public class DemoSpringConfigApplication implements ApplicationRunner {
 
-	@Autowired
-	private MailConfig mailConfig;
+    private final MailConfig mailConfig;
 
-	public static void main(String[] args) {
-		SpringApplication.run(DemoSpringConfigApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DemoSpringConfigApplication.class, args);
+    }
 
-	@Override
-	public void run(ApplicationArguments args) throws Exception {
-		System.out.println(mailConfig);
-	}
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        System.out.println(mailConfig);
+    }
 }

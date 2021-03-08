@@ -1,44 +1,26 @@
 package com.thoughtworks.capability.gtb.demospringconfig;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties("mail")
+import java.util.List;
+import java.util.Map;
+
+@Data
+@ConfigurationProperties(value = "mail")
 public class MailConfig {
 
     private String hostname;
+
     private int port;
+
     private String from;
 
-    public String getHostname() {
-        return hostname;
-    }
+    private List<String> defaultRecipients;
 
-    public void setHostname(String hostname) {
-        this.hostname = hostname;
-    }
+    private Map<String, Boolean> additionalHeaders;
 
-    public int getPort() {
-        return port;
-    }
+    private Credentials credentials;
 
-    public void setPort(int port) {
-        this.port = port;
-    }
 
-    public String getFrom() {
-        return from;
-    }
-
-    public void setFrom(String from) {
-        this.from = from;
-    }
-
-    @Override
-    public String toString() {
-        return "MailConfig{" +
-                "hostname='" + hostname + '\'' +
-                ", port=" + port +
-                ", from='" + from + '\'' +
-                '}';
-    }
 }
